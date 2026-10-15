@@ -1,0 +1,15 @@
+{
+  "domain": "reefability",
+  "name": "Reefability",
+  "codeowners": [
+    "@reefabilityapp"
+  ],
+  "config_flow": true,
+  "dependencies": [],
+  "documentation": "https://reefability.com/home-assistant",
+  "integration_type": "hub",
+  "iot_class": "cloud_polling",
+  "issue_tracker": "https://github.com/reefabilityapp/reefability-homeassistant/issues",
+  "requirements": [],
+  "version": "0.1.1"
+}

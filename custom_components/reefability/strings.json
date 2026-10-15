@@ -1,0 +1,261 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Reefability",
+        "description": "In the Reefability app open More > Home Assistant > Create token, then paste the token here.",
+        "data": {
+          "token": "Token"
+        },
+        "data_description": {
+          "token": "48 characters, letters a to f and numbers."
+        }
+      },
+      "reauth_confirm": {
+        "title": "Reconnect Reefability",
+        "description": "The token no longer works (it may have been removed in the app). Create a new one in the Reefability app under More > Home Assistant > Create token and paste it here.",
+        "data": {
+          "token": "Token"
+        }
+      }
+    },
+    "error": {
+      "invalid_token": "That does not look like a Reefability token. It is 48 characters long, using a to f and 0 to 9.",
+      "invalid_auth": "Reefability did not accept this token. Create a new one in the app and try again.",
+      "cannot_connect": "Could not reach Reefability. Check the internet connection and try again.",
+      "no_tanks": "This account has no tanks yet. Add a tank in the Reefability app first.",
+      "unknown": "Something unexpected happened. Try again in a minute."
+    },
+    "abort": {
+      "already_configured": "This token is already set up.",
+      "reauth_successful": "Reefability is connected again."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Send to Reefability",
+        "description": "Choose the tank these Home Assistant sensors belong to. Run this again to link sensors to another tank.",
+        "data": {
+          "tank": "Tank"
+        }
+      },
+      "entities": {
+        "title": "Send to Reefability",
+        "description": "Pick the Home Assistant entities to send to {tank}. Readings are saved about every 10 minutes, and a leak sensor that turns wet sends you an urgent push from Reefability.",
+        "sections": {
+          "probes": {
+            "name": "Tank probes",
+            "description": "One sensor per parameter. Units are converted for you (for example °C, ppt, meq/L).",
+            "data": {
+              "param_temperature": "Water temperature",
+              "param_salinity": "Salinity",
+              "param_ph": "pH",
+              "param_orp": "ORP",
+              "param_alkalinity": "Alkalinity",
+              "param_calcium": "Calcium",
+              "param_magnesium": "Magnesium",
+              "param_nitrate": "Nitrate",
+              "param_phosphate": "Phosphate",
+              "param_potassium": "Potassium"
+            }
+          },
+          "room": {
+            "name": "Room",
+            "data": {
+              "room_temperature": "Room temperature",
+              "room_humidity": "Room humidity",
+              "co2": "CO2"
+            }
+          },
+          "more": {
+            "name": "Leak sensors and more",
+            "data": {
+              "leak": "Leak sensors",
+              "power": "Power",
+              "other": "Other"
+            },
+            "data_description": {
+              "leak": "Moisture binary sensors near the tank, sump or reservoir.",
+              "power": "Power or energy sensors and smart plugs. Stored for later use.",
+              "other": "Anything else worth keeping. Stored for later use."
+            }
+          }
+        }
+      }
+    },
+    "abort": {
+      "not_loaded": "Reefability is not connected right now. Try again once it is.",
+      "no_tanks": "This account has no tanks yet."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "alkalinity": {
+        "name": "Alkalinity"
+      },
+      "calcium": {
+        "name": "Calcium"
+      },
+      "magnesium": {
+        "name": "Magnesium"
+      },
+      "nitrate": {
+        "name": "Nitrate"
+      },
+      "phosphate": {
+        "name": "Phosphate"
+      },
+      "temperature": {
+        "name": "Temperature"
+      },
+      "salinity": {
+        "name": "Salinity"
+      },
+      "ph": {
+        "name": "pH"
+      },
+      "orp": {
+        "name": "ORP"
+      },
+      "potassium": {
+        "name": "Potassium"
+      },
+      "ammonia": {
+        "name": "Ammonia"
+      },
+      "nitrite": {
+        "name": "Nitrite"
+      },
+      "tasks_today": {
+        "name": "Tasks due today"
+      },
+      "tasks_overdue": {
+        "name": "Tasks overdue"
+      },
+      "out_of_range_count": {
+        "name": "Readings out of range"
+      }
+    },
+    "binary_sensor": {
+      "out_of_range": {
+        "name": "Out of range"
+      },
+      "leak": {
+        "name": "Leak"
+      },
+      "device_offline": {
+        "name": "Device offline"
+      }
+    },
+    "button": {
+      "feed_start": {
+        "name": "Start feed mode"
+      },
+      "feed_stop": {
+        "name": "Stop feed mode"
+      }
+    }
+  },
+  "exceptions": {
+    "no_display": {
+      "message": "Feed mode needs a Reefability Display that is online and connected to this tank."
+    },
+    "api_error": {
+      "message": "Reefability: {message}"
+    },
+    "auth_failed": {
+      "message": "Reefability did not accept the token. Reconnect the integration with a new token."
+    },
+    "cannot_connect": {
+      "message": "Could not reach Reefability ({message}). Try again in a minute."
+    },
+    "unknown_tank": {
+      "message": "That is not a Reefability tank."
+    },
+    "tank_required": {
+      "message": "Pick a tank (a Reefability device or a tank id)."
+    },
+    "not_loaded": {
+      "message": "Reefability is not connected right now."
+    }
+  },
+  "selector": {
+    "parameter": {
+      "options": {
+        "alkalinity": "Alkalinity",
+        "calcium": "Calcium",
+        "magnesium": "Magnesium",
+        "nitrate": "Nitrate",
+        "phosphate": "Phosphate",
+        "temperature": "Temperature",
+        "salinity": "Salinity",
+        "ph": "pH",
+        "orp": "ORP",
+        "potassium": "Potassium",
+        "ammonia": "Ammonia",
+        "nitrite": "Nitrite"
+      }
+    }
+  },
+  "services": {
+    "log_reading": {
+      "name": "Log reading",
+      "description": "Saves a test result to a Reefability tank.",
+      "fields": {
+        "device_id": {
+          "name": "Tank",
+          "description": "The Reefability tank (device)."
+        },
+        "tank_id": {
+          "name": "Tank id",
+          "description": "Instead of picking the device, the Reefability tank id."
+        },
+        "parameter": {
+          "name": "Parameter",
+          "description": "What was measured."
+        },
+        "value": {
+          "name": "Value",
+          "description": "The reading."
+        },
+        "unit": {
+          "name": "Unit",
+          "description": "Optional, for example dKH, meq/L, ppm, °C, °F, ppt or SG. Without it the tank's usual unit is used."
+        }
+      }
+    },
+    "complete_task": {
+      "name": "Complete task",
+      "description": "Ticks a Reefability task off. Task ids are listed on the Tasks due today and Tasks overdue sensors.",
+      "fields": {
+        "task_id": {
+          "name": "Task id",
+          "description": "The id of the task."
+        },
+        "device_id": {
+          "name": "Tank",
+          "description": "Optional, only needed with more than one Reefability account."
+        }
+      }
+    },
+    "ask": {
+      "name": "Ask Reefer AI",
+      "description": "Asks Reefer AI a short question about a tank and returns the answer.",
+      "fields": {
+        "device_id": {
+          "name": "Tank",
+          "description": "The Reefability tank (device)."
+        },
+        "tank_id": {
+          "name": "Tank id",
+          "description": "Instead of picking the device, the Reefability tank id."
+        },
+        "question": {
+          "name": "Question",
+          "description": "What you would like to know."
+        }
+      }
+    }
+  }
+}

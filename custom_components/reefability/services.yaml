@@ -1,0 +1,77 @@
+log_reading:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: reefability
+    tank_id:
+      example: 1
+      selector:
+        number:
+          min: 1
+          max: 999999999
+          mode: box
+    parameter:
+      required: true
+      selector:
+        select:
+          translation_key: parameter
+          options:
+            - alkalinity
+            - calcium
+            - magnesium
+            - nitrate
+            - phosphate
+            - temperature
+            - salinity
+            - ph
+            - orp
+            - potassium
+            - ammonia
+            - nitrite
+    value:
+      required: true
+      example: 8.2
+      selector:
+        number:
+          min: -1000
+          max: 100000
+          step: any
+          mode: box
+    unit:
+      example: dKH
+      selector:
+        text:
+complete_task:
+  fields:
+    task_id:
+      required: true
+      example: 62756
+      selector:
+        number:
+          min: 1
+          max: 999999999999
+          mode: box
+    device_id:
+      selector:
+        device:
+          integration: reefability
+ask:
+  fields:
+    device_id:
+      selector:
+        device:
+          integration: reefability
+    tank_id:
+      example: 1
+      selector:
+        number:
+          min: 1
+          max: 999999999
+          mode: box
+    question:
+      required: true
+      example: Is my alkalinity stable this week?
+      selector:
+        text:
+          multiline: true

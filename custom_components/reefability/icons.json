@@ -1,0 +1,32 @@
+{
+  "entity": {
+    "sensor": {
+      "alkalinity": { "default": "mdi:test-tube" },
+      "calcium": { "default": "mdi:test-tube" },
+      "magnesium": { "default": "mdi:test-tube" },
+      "nitrate": { "default": "mdi:test-tube" },
+      "phosphate": { "default": "mdi:test-tube" },
+      "salinity": { "default": "mdi:shaker-outline" },
+      "orp": { "default": "mdi:flash-triangle-outline" },
+      "potassium": { "default": "mdi:test-tube" },
+      "ammonia": { "default": "mdi:test-tube" },
+      "nitrite": { "default": "mdi:test-tube" },
+      "tasks_today": { "default": "mdi:calendar-check" },
+      "tasks_overdue": { "default": "mdi:calendar-alert" },
+      "out_of_range_count": { "default": "mdi:chart-bell-curve" }
+    },
+    "binary_sensor": {
+      "out_of_range": { "default": "mdi:chart-bell-curve" },
+      "device_offline": { "default": "mdi:lan-disconnect" }
+    },
+    "button": {
+      "feed_start": { "default": "mdi:fish" },
+      "feed_stop": { "default": "mdi:fish-off" }
+    }
+  },
+  "services": {
+    "log_reading": { "service": "mdi:test-tube" },
+    "complete_task": { "service": "mdi:check-circle-outline" },
+    "ask": { "service": "mdi:chat-question-outline" }
+  }
+}
